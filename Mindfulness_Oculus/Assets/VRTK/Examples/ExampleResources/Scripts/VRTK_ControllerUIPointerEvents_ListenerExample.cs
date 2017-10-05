@@ -48,6 +48,7 @@
         private void VRTK_ControllerUIPointerEvents_ListenerExample_UIPointerElementClick(object sender, UIPointerEventArgs e)
         {
             VRTK_Logger.Info("UI Pointer clicked " + e.currentTarget.name + " on Controller index [" + VRTK_ControllerReference.GetRealIndex(e.controllerReference) + "] and the state was " + e.isActive + " ### World Position: " + e.raycastResult.worldPosition);
+            Debug.Log("***********************************************************************");
         }
 
         private void VRTK_ControllerUIPointerEvents_ListenerExample_UIPointerElementDragStart(object sender, UIPointerEventArgs e)
