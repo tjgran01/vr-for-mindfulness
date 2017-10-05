@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class SkySetting : MonoBehaviour {
 
@@ -28,4 +29,5 @@ public class SkySetting : MonoBehaviour {
         RenderSettings.skybox = nightSkybox;
         isDay = false;
     }
+
 }
