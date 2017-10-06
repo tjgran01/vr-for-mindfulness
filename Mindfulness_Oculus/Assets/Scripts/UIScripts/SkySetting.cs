@@ -28,6 +28,7 @@ public class SkySetting : MonoBehaviour {
     {
         RenderSettings.skybox = nightSkybox;
         isDay = false;
+        //Debug.Log("Night clicked");
     }
 
 }
