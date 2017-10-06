@@ -11,6 +11,12 @@ public class GameManager : MonoBehaviour {
     [SerializeField]
     GameObject canvas;
 
+    [SerializeField]
+    GameObject background_Audio;
+
+    [SerializeField]
+    GameObject vocal_Audio;
+
     private string[] scenes = { "DemoSceneFree", "OculusAvatar", "Demo" };
 
     private void Awake()
@@ -18,6 +24,9 @@ public class GameManager : MonoBehaviour {
         instance = this;
         DontDestroyOnLoad(transform.gameObject);
         DontDestroyOnLoad(canvas);
+        DontDestroyOnLoad(background_Audio);
+        DontDestroyOnLoad(vocal_Audio);
+
     }
 
     // Use this for initialization
