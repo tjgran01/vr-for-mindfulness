@@ -25,8 +25,8 @@ public class ChangeViews : MonoBehaviour
 
         GetComponent<VRTK_ControllerEvents>().ButtonOnePressed += new ControllerInteractionEventHandler(ThirdPersonView);
         //spawn1.position = new Vector3(0.0f, 3.3f, 1.4f);
-        
-       
+
+        BreathManager.instance.Inhale("camera");
     }
 
     private void ThirdPersonView(object sender, ControllerInteractionEventArgs e)
@@ -37,12 +37,13 @@ public class ChangeViews : MonoBehaviour
         VRTK_Camera.transform.position = spawnPoints[spawnIndex].position;
         VRTK_Camera.transform.rotation = spawnPoints[spawnIndex].rotation;
 
-        if(spawnIndex == 0)
+        if(spawnIndex == 0) //First person view
         {
             Character.SetActive(false);
         }else
         {
             Character.SetActive(true);
+            BreathManager.instance.Inhale("character");
         }
     }
 }
