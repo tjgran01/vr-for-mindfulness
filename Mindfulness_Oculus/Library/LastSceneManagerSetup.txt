@@ -1,4 +1,4 @@
 sceneSetups:
-- path: Assets/Scenes/OculusAvatar.unity
+- path: Assets/Scenes/ThirdPersonView.unity
   isLoaded: 1
   isActive: 1
