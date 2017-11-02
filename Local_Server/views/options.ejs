@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Mindfulness</title>
+
+  
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+  <link rel='stylesheet' href='/stylesheets/style.css' />
+  <script type="text/javascript" src=" /javascripts/optionsPage.js "></script>
+</head>
+
+<body>
+  <h1>Game Options</h1><br>
+  
+  <form action="/options" method="post">
+
+    <input type="text" name="name">
+    <br><br><br>
+    
+    <div class="btn-group" data-toggle="buttons">
+        <label class="btn btn-primary active">
+          <input type="radio" name="mode" value="day" autocomplete="off"> Day Mode
+        </label>
+        <label class="btn btn-primary">
+          <input type="radio" name="mode" value="night" autocomplete="off"> Night Mode
+        </label>
+      </div><br><br><br>
+
+    <button type="submit">Submit</button>
+    <form>
+    
+        
+</body>
+
+</html>
