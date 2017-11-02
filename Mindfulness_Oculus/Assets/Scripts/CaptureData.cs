@@ -5,11 +5,6 @@ using UnityEngine;
 using SimpleJSON;
 
 public class CaptureData : MonoBehaviour {
-
-	// Use this for initialization
-	void Start () {
-		
-	}
 	
 	// Update is called once per frame
 	void Update () {
@@ -20,14 +15,21 @@ public class CaptureData : MonoBehaviour {
             string url = "http://localhost:3000/captureData";
             string jsonResponse = client.DownloadString(url);
 
-            var x = JSON.Parse(jsonResponse);
+            var dataFromServer = JSON.Parse(jsonResponse);
 
-            Debug.Log(x["mode"]);
+            var mode = dataFromServer["mode"];
+
+            if(mode != Settings.instance.Mode)
+            {
+                Settings.instance.ChangeSky(mode);
+            }
+
+            //Debug.Log(x["mode"]);
             //Console.WriteLine(jsonResponse);
         }
         catch (WebException ex)
         {
-            Debug.Log("Exception Occured");
+            //Debug.Log("Exception Occured");
             //Console.WriteLine("Exception occured");
         }
     }

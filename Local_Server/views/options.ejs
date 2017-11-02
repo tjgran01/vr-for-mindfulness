@@ -14,19 +14,29 @@
 </head>
 
 <body>
+    <%  var dayMode = "";
+    var nightMode = ""; %>
+
   <h1>Game Options</h1><br>
   
   <form action="/options" method="post">
 
     <input type="text" name="name">
     <br><br><br>
-    
+    <h3> Current Time Mode : <%= timeMode%> </h3>
+    <br><br>
     <div class="btn-group" data-toggle="buttons">
-        <label class="btn btn-primary active">
-          <input type="radio" name="mode" value="day" autocomplete="off"> Day Mode
+
+        <% if(timeMode == "Day"){
+          dayMode = "active"; 
+        } else{
+          nightMode = "active";
+        } %>
+        <label class="btn btn-primary <%= dayMode%>">
+          <input type="radio" name="mode" value="Day" autocomplete="off"> Daytime
         </label>
-        <label class="btn btn-primary">
-          <input type="radio" name="mode" value="night" autocomplete="off"> Night Mode
+        <label class="btn btn-primary <%= nightMode%>">
+          <input type="radio" name="mode" value="Night" autocomplete="off"> Sunset
         </label>
       </div><br><br><br>
 

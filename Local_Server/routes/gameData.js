@@ -1,7 +1,7 @@
 var exports = module.exports = {};
 
 exports.name = "Antis";
-exports.mode = "Day";
+exports.mode = "Night";
 
 exports.getData = function() {
   return exports;

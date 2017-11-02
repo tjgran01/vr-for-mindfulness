@@ -4,16 +4,17 @@ var dataObj = require("./gameData.js");
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-  res.render('options', {});
+  var x = dataObj.getData();
+  res.render('options', {playerName:x.name, timeMode:x.mode});
 });
 
 router.post('/', function(req, res, next){
     var x = req.body;
-    console.log(req.body.mode);
-    console.log(req.body.name);
     dataObj.putData(req.body);
-    console.log(dataObj.getData());
-    res.render('options', {});
+
+    var y = dataObj.getData();
+    //console.log(dataObj.getData());
+    res.render('options', {playerName:y.name, timeMode:y.mode});
   });
 
 module.exports = router;
