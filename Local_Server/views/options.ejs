@@ -4,23 +4,24 @@
 <head>
     <title>Mindfulness</title>
 
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
   
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
-  <!-- Latest compiled and minified CSS -->
+  <!-- For Drop down -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.4/css/bootstrap-select.min.css">
-
-<!-- Latest compiled and minified JavaScript -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.4/js/bootstrap-select.min.js"></script>
+
+<!-- For Bootstrap Toggle -->
+<link href="https://gitcdn.github.io/bootstrap-toggle/2.2.2/css/bootstrap-toggle.min.css" rel="stylesheet">
+<script src="https://gitcdn.github.io/bootstrap-toggle/2.2.2/js/bootstrap-toggle.min.js"></script>
+
+
 
 <link rel='stylesheet' href='/stylesheets/style.css' />
 </head>
 <body>
-
-    <!-- <script type="text/javascript" src="/javascripts/optionsPage.js "></script> -->
-
     <%  var day = "";
     var night = "";
     var noon = "";
@@ -30,105 +31,129 @@
     var t2 = "";
     var t3 = ""; %>
 
-  <h1>Game Options</h1><br>
-  
-  <form action="/options" method="post">
 
-    <!-- <input type="text" name="name">
-    <br><br><br> -->
-    <h3> Current Time Mode : <%= timeMode%> </h3>
-    <br>
-    <div class="btn-group" data-toggle="buttons">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
+                
+            </div>
+            <div class="col-xs-8 col-sm-8 col-md-8 col-lg-8">
+                <h1><u>Scene Options</u></h1><br>
+                <form action="/options" method="post">
+              
+                  <!-- <input type="text" name="name">
+                  <br><br><br> -->
+                  <h3> Current Time Mode : <%= timeMode%> </h3>
+                  <br>
+                  <div class="btn-group" data-toggle="buttons">
+              
+                      <% if(timeMode == "Day"){
+                        day = "active"; 
+                      } else if(timeMode == "Noon"){
+                        noon = "active";
+                      } else if(timeMode == "Evening"){
+                        evening = "active";
+                      } else{
+                        night = "active";
+                      } %>
+                      <label class="btn btn-primary <%= day%>">
+                        <input type="radio" name="mode" value="Day" autocomplete="off"> Early Day
+                      </label>
+                      <label class="btn btn-primary <%= noon%>">
+                        <input type="radio" name="mode" value="Noon" autocomplete="off"> Mid Noon
+                      </label>
+                      <label class="btn btn-primary <%= evening%>">
+                        <input type="radio" name="mode" value="Evening" autocomplete="off"> Evening
+                      </label>
+                      <label class="btn btn-primary <%= night%>">
+                        <input type="radio" name="mode" value="Night" autocomplete="off"> Late Night
+                      </label>
+                    </div><br><br><br>
 
-        <% if(timeMode == "Day"){
-          day = "active"; 
-        } else if(timeMode == "Noon"){
-          noon = "active";
-        } else if(timeMode == "Evening"){
-          evening = "active";
-        } else{
-          night = "active";
-        } %>
-        <label class="btn btn-primary <%= day%>">
-          <input type="radio" name="mode" value="Day" autocomplete="off"> Early Day
-        </label>
-        <label class="btn btn-primary <%= noon%>">
-          <input type="radio" name="mode" value="Noon" autocomplete="off"> Mid Noon
-        </label>
-        <label class="btn btn-primary <%= evening%>">
-          <input type="radio" name="mode" value="Evening" autocomplete="off"> Evening
-        </label>
-        <label class="btn btn-primary <%= night%>">
-          <input type="radio" name="mode" value="Night" autocomplete="off"> Late Night
-        </label>
-      </div><br><br><br>
-
-      <% if(audioTrack == "track1"){
-        t1 = "selected"; 
-      } else if(audioTrack == "track2"){
-        t2 = "selected";
-      } else{
-        t3 = "selected";
-      } %>
-
-      <h3>Audio Track</h3>
-      <select name="audio" class="selectpicker">
-          <option value="track1" <%= t1%> >Track 1</option>
-          <option value="track2" <%= t2%> >Track 2</option>
-          <option value="track3" <%= t3%> >Track 3</option>
-      </select>
-      <br><br>
-
-
-      <h3>Audio Track Volume : <span id="vol1"></span></h3>
-      <div id="slidecontainer">
-          <input type="range" name="audio_Volume" min="1" max="100" value="<%= volume1%>" class="slider" id="trackRange1">
-      </div>
-
-      <br><br>
-      <h3>Background Track Volume : <span id="vol2"></span></h3>
-      <div id="slidecontainer">
-          <input type="range" name="background_Volume" min="1" max="100" value="<%= volume2%>" class="slider" id="trackRange2">
-      </div>
-
-      <br><br><br>
-      <button type="submit" class="btn btn-success">Submit</button>
-    <form>
+                    <% if(breathingEffect == "on"){
+                      temp = "on"; 
+                    } else{
+                      temp = "off";
+                    } %>
+                    <h3>Breathing Effect: &nbsp <input type="checkbox" checked data-toggle="toggle" name="breath" id="breathingToggle" value="<%= temp%>"> </h3>  
+                    <br>
+              
+                    <% if(audioTrack == "track1"){
+                      t1 = "selected"; 
+                    } else if(audioTrack == "track2"){
+                      t2 = "selected";
+                    } else{
+                      t3 = "selected";
+                    } %>
+              
+                    <h3>Audio Track</h3>
+                    <select name="audio" class="selectpicker">
+                        <option value="track1" <%= t1%> >Track 1</option>
+                        <option value="track2" <%= t2%> >Track 2</option>
+                        <option value="track3" <%= t3%> >Track 3</option>
+                    </select>
+                    <br><br>
+              
+              
+                    <h3>Audio Track Volume : <span id="vol1"></span></h3>
+                    <div id="slidecontainer">
+                        <input type="range" name="audio_Volume" min="1" max="100" value="<%= volume1%>" class="slider" id="trackRange1">
+                    </div>
+              
+                    <br><br>
+                    <h3>Background Track Volume : <span id="vol2"></span></h3>
+                    <div id="slidecontainer">
+                        <input type="range" name="background_Volume" min="1" max="100" value="<%= volume2%>" class="slider" id="trackRange2">
+                    </div>
+              
+                    <br><br><br>
+                    <button type="submit" class="btn btn-lg btn-success" style="text-align: center;">Submit</button>
+                  <form>
+            </div>
+            <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
+                
+            </div>
+        </div>
+    </div>
+    
 
     <script>
-      var slider = document.getElementById("trackRange1");
-      var output = document.getElementById("vol1");
-      output.innerHTML = slider.value;
-           
-      slider.oninput = function() {
-        output.innerHTML = this.value;
-        //console.log(this.value);
-      }
+        var slider = document.getElementById("trackRange1");
+        var output = document.getElementById("vol1");
+        output.innerHTML = slider.value;
+             
+        slider.oninput = function() {
+          output.innerHTML = this.value;
+          //console.log(this.value);
+        }
+  
+        var slider2 = document.getElementById("trackRange2");
+        var output2 = document.getElementById("vol2");
+        output2.innerHTML = slider2.value;
+             
+        slider2.oninput = function() {
+          output2.innerHTML = this.value;
+          //console.log(this.value);
+        }
 
-      var slider2 = document.getElementById("trackRange2");
-      var output2 = document.getElementById("vol2");
-      output2.innerHTML = slider2.value;
-           
-      slider2.oninput = function() {
-        output2.innerHTML = this.value;
-        //console.log(this.value);
-      }
-
-      $(document).ready(function() {
-      });
-    
+        $("#breathingToggle").change(function(){
+          if($(this).prop("checked") == true){
+            this.value = "on";
+          }else{
+            this.value = "off";
+          }
+        });
+  
+        $(document).ready(function() {
+          var toggleBreathing = document.getElementById("breathingToggle");
+          if(toggleBreathing.value == "on"){
+            $('#breathingToggle').bootstrapToggle('on')
+          }else{
+            $('#breathingToggle').bootstrapToggle('off')
+          }
+        });
+      
     </script>
-    
-      <!-- <div class="dropdown">
-        <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Audio Track
-        <span class="caret"></span></button>
-        <ul class="dropdown-menu">
-          <li><a>Track 1</a><input type="text" name="track" value="track1"/></li>
-          <li><a>Track 2</a><input type="text" name="track" value="track2"/></li>
-          <li><a>Track 3</a><input type="text" name="track" value="track3"/></li>
-        </ul>
-      </div> -->
-        
 </body>
 
 </html>

@@ -1,6 +1,7 @@
 body {
   padding: 50px;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  background-image: url("../images/background.jpg");
 }
 
 a {
@@ -11,8 +12,12 @@ label {
   margin-right: 10px;
 }
 
+h1 {
+  font-family: times, Times New Roman, times-roman, georgia, serif;
+}
+
 #slidecontainer {
-  width: 30%;
+  width: 50%;
   margin-top: 15px;
 }
 

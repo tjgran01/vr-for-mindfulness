@@ -5,7 +5,7 @@ var dataObj = require("./gameData.js");
 /* GET home page. */
 router.get('/', function(req, res, next) {
   var x = dataObj.getData();
-  res.render('options', {playerName:x.name, timeMode:x.mode, audioTrack:x.audio, volume1:x.audioVolume, volume2:x.backgroundVolume});
+  res.render('options', {playerName:x.name, timeMode:x.mode, audioTrack:x.audio, volume1:x.audioVolume, volume2:x.backgroundVolume, breathingEffect:x.breathing});
 });
 
 router.post('/', function(req, res, next){
@@ -14,8 +14,8 @@ router.post('/', function(req, res, next){
     dataObj.putData(req.body);
     var y = dataObj.getData();
     //console.log(dataObj.getData());
-    
-    res.render('options', {playerName:y.name, timeMode:y.mode, audioTrack:y.audio, volume1:y.audioVolume, volume2:y.backgroundVolume});
+    console.log(req.body.breath);
+    res.render('options', {playerName:y.name, timeMode:y.mode, audioTrack:y.audio, volume1:y.audioVolume, volume2:y.backgroundVolume, breathingEffect:y.breathing});
   });
 
 module.exports = router;

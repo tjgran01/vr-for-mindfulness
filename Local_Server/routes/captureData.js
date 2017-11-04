@@ -6,7 +6,7 @@ var dataObj = require("./gameData.js");
 router.get('/', function(req, res, next) {
   //console.log(dataObj.getData());
   var x = dataObj.getData();
-  res.json({ "mode":x.mode, "audioTrack":x.audio, "audioVolume":x.audioVolume, "backgroundVolume":x.backgroundVolume });
+  res.json({ "mode":x.mode, "audioTrack":x.audio, "audioVolume":x.audioVolume, "backgroundVolume":x.backgroundVolume, "breathing":x.breathing });
   //res.send(dataObj.getData());
   //res.render('capture', {});  //'index' is the index.ejs that has to be used
 });
