@@ -4,7 +4,7 @@ exports.name = "Antis";
 exports.mode = "Day";
 exports.audio = "track1";
 exports.audioVolume = "70";
-exports.backgroundVolume = "25";
+exports.backgroundVolume = "100";
 exports.breathing = "on";
 
 exports.getData = function() {
