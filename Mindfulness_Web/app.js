@@ -4,26 +4,51 @@ var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
+var mongoose = require('mongoose');
+var passport = require('passport');
+var LocalStrategy = require('passport-local').Strategy;
+
+  mongoose.Promise = global.Promise;
+  //  mongoose.connect('mongodb://abhijit93:abhijit93@ds111568.mlab.com:11568/mindfulness_testing')
+  //    .then(() =>  console.log('connection to remote database succesful'))
+  //    .catch((err) => console.error(err));
+  mongoose.connect('mongodb://localhost/localPempDB')
+     .then(() =>  console.log('connection to local database succesful'))
+     .catch((err) => console.error(err));
 
 var index = require('./routes/index');
-var users = require('./routes/users');
+var profile = require('./routes/profile');
 
 var app = express();
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
+//app.use(express.static(__dirname + '/public'));
 app.set('view engine', 'ejs');
 
-// uncomment after placing your favicon in /public
 //app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
 app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
+app.use(require('express-session')({
+    secret: 'secretSessionKey',
+    resave: false,
+    saveUninitialized: false
+}));
+app.use(passport.initialize());
+app.use(passport.session());
+
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', index);
-app.use('/users', users);
+app.use('/profile', profile);
+
+// passport configuration
+var User = require('./models/User');
+passport.use(new LocalStrategy(User.authenticate()));
+passport.serializeUser(User.serializeUser());
+passport.deserializeUser(User.deserializeUser());
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
