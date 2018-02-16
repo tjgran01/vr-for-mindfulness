@@ -61,12 +61,10 @@ passport.use('clinicianLocal', new LocalStrategy(Clinician.authenticate()));
 // passport.deserializeUser(User.deserializeUser(), Clinician.deserializeUser());
 
 passport.serializeUser(function(user, done) { 
-  console.log(user);
   done(null, user);
 });
 
 passport.deserializeUser(function(user, done) {
-  console.log(user);
   if(user!=null)
     done(null,user);
 });
