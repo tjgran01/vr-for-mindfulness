@@ -15,7 +15,8 @@ var UserSchema = new Schema({
     authentication_id: {            //Auto generater when regsitration
         type: mongoose.Schema.Types.ObjectId, 
         ref: 'AuthenticationID'
-    }   
+    },
+    isUser:Boolean   
 },
 {
     collection: 'users'

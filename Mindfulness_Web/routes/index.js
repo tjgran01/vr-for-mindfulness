@@ -24,4 +24,3 @@ router.get('/logout', auth.logout);
 router.post('/eventLog', auth.logEvent);
 
 module.exports = router;
-

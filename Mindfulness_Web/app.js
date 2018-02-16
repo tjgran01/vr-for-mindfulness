@@ -18,6 +18,7 @@ var LocalStrategy = require('passport-local').Strategy;
 
 var index = require('./routes/index');
 var profile = require('./routes/profile');
+var dashboard = require('./routes/dashboard');
 
 var app = express();
 
@@ -43,12 +44,38 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', index);
 app.use('/profile', profile);
+app.use('/dashboard', dashboard);
 
 // passport configuration
+// var User = require('./models/User');
+// passport.use(new LocalStrategy(User.authenticate()));
+// passport.serializeUser(User.serializeUser());
+// passport.deserializeUser(User.deserializeUser());
+
 var User = require('./models/User');
-passport.use(new LocalStrategy(User.authenticate()));
-passport.serializeUser(User.serializeUser());
-passport.deserializeUser(User.deserializeUser());
+var Clinician = require('./models/Clinician');
+passport.use('userLocal', new LocalStrategy(User.authenticate()));
+passport.use('clinicianLocal', new LocalStrategy(Clinician.authenticate()));
+//passport.use(new LocalStrategy(User.authenticate(), Clinician.authenticate()));
+// passport.serializeUser(User.serializeUser(), Clinician.serializeUser());
+// passport.deserializeUser(User.deserializeUser(), Clinician.deserializeUser());
+
+passport.serializeUser(function(user, done) { 
+  console.log(user);
+  done(null, user);
+});
+
+passport.deserializeUser(function(user, done) {
+  console.log(user);
+  if(user!=null)
+    done(null,user);
+});
+
+// // passport configuration
+// var Clinician = require('./models/Clinician');
+// passport.use(new LocalStrategy(Clinician.authenticate()));
+// passport.serializeUser(Clinician.serializeUser());
+// passport.deserializeUser(Clinician.deserializeUser());
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
