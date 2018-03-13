@@ -1,0 +1,79 @@
+~~~~~~ Data Model ~~~~~~
+<Username>: {
+	<Session_number>: {
+		"Current_session": "True/False",
+		"Date": "",
+		"Audio": {
+			"Tracks": ["guide1.mp3", "guide2.mp3", "~NewlyAddedTracks"],
+			"Current": "guide1.mp3",
+			"Vocal_volume": 0-100,
+			"Background_volume": 0-100
+		},
+		"Scene":{
+			"Scene_id": 0,
+			"Timeline": 0-24,	//24 Hour format
+			"Cloud_speed": 1-10,
+			"Breathing": "True/False"
+		},
+		"Start_timestamp": "~DatTime format",
+		"End_timestamp": "~DateTime format",
+		"Duration": "~TimeSpan format",
+		"Health_monitor": {
+			"Start_heartrate": 0,
+			"End_heartrate": 0,
+			"Max_heartrate": 0,
+			"Min_heartrate": 0,
+			"Average_heartrate": 0,
+			"File": <File_Upload_URL>
+		}
+	}
+}
+
+~~~~ Examples ~~~~~
+
+"abhijit.93@hotmail.com":{
+	"00011":{
+		"Current_session": "False",
+		..
+		..
+	},
+	"00012":{
+		"Current_session": "False",
+		..
+		..
+	},
+	"00014":{
+		"Current_session": "True",
+		"Date": "",
+		"Audio": {
+			"Tracks": ["guide1.mp3", "guide2.mp3", "guide3.mp3", "myNewGuide.mp3"],
+			"Current": "guide1.mp3",
+			"Vocal_volume": 70,
+			"Background_volume": 50
+		},
+		"Scene":{
+			"Scene_id": 0,
+			"Timeline": 0830,
+			"Cloud_speed": 4,
+			"Breathing": "True"
+		},
+		"Start_timestamp": "3/12/2018 10:03:06 PM",
+		"End_timestamp": "NA",
+		"Duration": "NA",	//"02:14:18 TimeSpan format"
+		"Health_monitor": {
+			"Start_heartrate": 0,
+			"End_heartrate": 0,
+			"Max_heartrate": 0,
+			"Min_heartrate": 0,
+			"Average_heartrate": 0,
+			"File": "NA"
+		}
+	}
+},
+"john@gmail.com"{
+	"00011":{
+		"Current_session": "False",
+		..
+		..
+	}
+}

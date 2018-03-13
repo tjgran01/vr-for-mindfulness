@@ -1,27 +1,29 @@
 <html>
-    <head>
-      <title>Login Page</title>
-      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    </head>
-    
-    <body>
-    
-      <div class="container">
-      <form class="form-signin" role="form" action="/login" method="post">
-        <h2 class="form-signin-heading">Please sign in</h2>
-        <label class="sr-only" for="inputEmail"></label>
-        <input class="form-control" type="text" name="username" id="inputEmail" placeholder="Username" required="required" autofocus="autofocus"/>
-        <input class="form-control" type="password" name="password" id="inputPassword" placeholder="Password"/><br>
-        <label class="radio-inline">
+
+<head>
+    <title>Login Page</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+</head>
+
+<body>
+
+    <div class="container">
+        <form class="form-signin" role="form" action="/login" method="post">
+            <h2 class="form-signin-heading">Please sign in</h2>
+            <label class="sr-only" for="inputEmail"></label>
+            <input class="form-control" type="text" name="username" id="inputEmail" placeholder="Username" required="required" autofocus="autofocus"
+            />
+            <input class="form-control" type="password" name="password" id="inputPassword" placeholder="Password" /><br>
+            <label class="radio-inline">
             <input type="radio" name="user_type" value="user" checked>User
           </label>
-          <label class="radio-inline">
+            <label class="radio-inline">
             <input type="radio" name="user_type" value="clinician">Clinician
           </label><br>
-        <!-- <textarea id="datetime" name="date" style="display:none;"></textarea> -->
-        <button class="btn btn-lg btn-primary btn-block" id="loginButtonId" type="submit">LOGIN</button>
-      </form>
-     <!-- <script>
+            <!-- <textarea id="datetime" name="date" style="display:none;"></textarea> -->
+            <button class="btn btn-lg btn-primary btn-block" id="loginButtonId" type="submit">LOGIN</button>
+        </form>
+        <!-- <script>
                 $(document).ready(function () {
                     //alert("Login page");
                     $("#loginButtonId").click(function (event) {
@@ -40,6 +42,7 @@
     
     </script> -->
     </div>
-    
-    </body>
-    </html>
+
+</body>
+
+</html>

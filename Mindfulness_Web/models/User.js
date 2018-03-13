@@ -7,20 +7,20 @@ var UserSchema = new Schema({
     password: String,           //excrypted through passport module
     location: String,
     name: String,
-    clinician_id: { 
-        type: mongoose.Schema.Types.ObjectId, 
+    clinician_id: {
+        type: mongoose.Schema.Types.ObjectId,
         ref: 'Clinician'
     },
     age: Number,
     authentication_id: {            //Auto generater when regsitration
-        type: mongoose.Schema.Types.ObjectId, 
+        type: mongoose.Schema.Types.ObjectId,
         ref: 'AuthenticationID'
     },
-    isUser:Boolean   
+    isUser: Boolean
 },
-{
-    collection: 'users'
-  });
+    {
+        collection: 'users'
+    });
 
 UserSchema.plugin(passportLocalMongoose);
 

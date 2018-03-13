@@ -8,18 +8,18 @@ var ClinicianSchema = new Schema({
     location: String,
     name: String,
     age: Number,
-    patients:[{
-        user_id:{ 
-            type: mongoose.Schema.Types.ObjectId, 
+    patients: [{
+        user_id: {
+            type: mongoose.Schema.Types.ObjectId,
             ref: 'User',
         }
     }],
     isClinician: Boolean
 },
-{
-    collection: 'clinicians'
-  });
+    {
+        collection: 'clinicians'
+    });
 
-  ClinicianSchema.plugin(passportLocalMongoose);
+ClinicianSchema.plugin(passportLocalMongoose);
 
 module.exports = mongoose.model('Clinician', ClinicianSchema);

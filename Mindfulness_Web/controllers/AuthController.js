@@ -124,7 +124,7 @@ userController.doLogin = function (req, res) {
 
   }
 
-  
+
 
 };
 
